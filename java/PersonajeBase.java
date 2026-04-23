@@ -52,4 +52,9 @@ public class PersonajeBase {
         return this.puntosDefensa;
     }
 
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return super.toString("nombre" +this.nombre );
+    }
 }
