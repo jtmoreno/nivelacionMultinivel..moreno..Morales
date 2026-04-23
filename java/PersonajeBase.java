@@ -55,6 +55,6 @@ public class PersonajeBase {
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return super.toString("nombre" +this.nombre );
+        return super.toString("nombre" +this.nombre + "nivel" );
     }
 }
