@@ -10,9 +10,11 @@ public class PersonajeBase {
     String clase;
     int puntosAtaque;
     int puntosDefensa;
+    int puntosMana;
 
     PersonajeBase(String nombre, int nivel, double vida,
-            double vidaMaxima, boolean estaVivo, String clase, int puntosAtaque, int puntosDefensa) {
+            double vidaMaxima, boolean estaVivo, String clase, int puntosAtaque, int puntosDefensa
+        ,int puntosMana) {
         this.nombre = nombre;
         this.nivel = nivel;
         this.vida = vida;
@@ -21,7 +23,7 @@ public class PersonajeBase {
         this.clase = clase;
         this.puntosAtaque = puntosAtaque;
         this.puntosDefensa = puntosDefensa;
-
+            this.puntosMana = puntosMana;
     }
 
 
