@@ -25,6 +25,18 @@ public class PersonajeBase {
         this.puntosDefensa = puntosDefensa;
             this.puntosMana = puntosMana;
     }
+    PersonajeBase(String nombre,  double vida,
+             boolean estaVivo, int puntosAtaque) {
+        this.nombre = nombre;
+        this.nivel = 1;
+        this.vida = vida;
+        this.vidaMaxima = this.vida;
+        this.estaVivo = estaVivo;
+        this.clase = "enemigo";
+        this.puntosAtaque = puntosAtaque;
+        this.puntosDefensa = 0;
+            this.puntosMana = 0;
+    }
 
 
     public String getNombre(){
@@ -52,10 +64,16 @@ public class PersonajeBase {
         return this.puntosDefensa;
     }
 
+
+    public void setVida(int cantidad, boolean dano){
+        this.vida =(dano)? this.vida - cantidad : this.vida + cantidad ;
+    }
+    
+
     @Override
     public String toString() {
         // TODO Auto-generated method stub
-        return super.toString("nombre" +this.nombre + "nivel" );
+        return ("nombre" +this.nombre + "nivel" );
     }
 }
 
