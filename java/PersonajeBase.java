@@ -1,7 +1,4 @@
 public class PersonajeBase {
-
-    // Atributos del personaje
-
     String nombre;
     int nivel;
     double vida;
@@ -12,9 +9,10 @@ public class PersonajeBase {
     int puntosDefensa;
     int puntosMana;
 
-    PersonajeBase(String nombre, int nivel, double vida,
-            double vidaMaxima, boolean estaVivo, String clase, int puntosAtaque, int puntosDefensa
-        ,int puntosMana) {
+    // Constructor completo (Héroe)
+    public PersonajeBase(String nombre, int nivel, double vida, double vidaMaxima, 
+                         boolean estaVivo, String clase, int puntosAtaque, 
+                         int puntosDefensa, int puntosMana) {
         this.nombre = nombre;
         this.nivel = nivel;
         this.vida = vida;
@@ -23,58 +21,39 @@ public class PersonajeBase {
         this.clase = clase;
         this.puntosAtaque = puntosAtaque;
         this.puntosDefensa = puntosDefensa;
-            this.puntosMana = puntosMana;
+        this.puntosMana = puntosMana;
     }
-    PersonajeBase(String nombre,  double vida,
-             boolean estaVivo, int puntosAtaque) {
+
+    // Constructor simplificado (Enemigos)
+    public PersonajeBase(String nombre, double vida, boolean estaVivo, int puntosAtaque) {
         this.nombre = nombre;
-        this.nivel = 1;
         this.vida = vida;
-        this.vidaMaxima = this.vida;
+        this.vidaMaxima = vida;
         this.estaVivo = estaVivo;
-        this.clase = "enemigo";
         this.puntosAtaque = puntosAtaque;
-        this.puntosDefensa = 0;
-            this.puntosMana = 0;
+        this.nivel = 1;
+        this.clase = "Enemigo";
     }
 
+    // --- MÉTODOS NECESARIOS PARA EL BLOQUE 5 ---
+    public double getVida() { return vida; }
+    public String getNombre() { return nombre; }
+    public int getPuntosAtaque() { return puntosAtaque; }
 
-    public String getNombre(){
-        return this.nombre;
+    // Método para manejar daño (esDano = true) o curación (esDano = false)
+    public void setVida(int cantidad, boolean esDano) {
+        if (esDano) {
+            this.vida -= cantidad;
+            if (this.vida < 0) this.vida = 0;
+        } else {
+            this.vida += cantidad;
+            if (this.vida > this.vidaMaxima) this.vida = this.vidaMaxima;
+        }
     }
-    public int getNivel(){
-        return this.nivel;
-    }
-    public double getVida(){
-        return this.vida;
-    }
-    public double getVidaMAx(){
-        return this.vidaMaxima;
-    }
-    public boolean getEstaVivo(){
-        return this.estaVivo;
-    }
-    public String getClase(){
-        return this.clase;
-    }
-    public int  getPuntosAtaque(){
-        return this.puntosAtaque;
-    }
-    public int  getPuntosDefensa(){
-        return this.puntosDefensa;
-    }
-
-
-    public void setVida(int cantidad, boolean dano){
-        this.vida =(dano)? this.vida - cantidad : this.vida + cantidad ;
-    }
-    
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return ("nombre" +this.nombre + "nivel" );
+        return String.format("%s [Nv.%d] | Vida: %.1f | Mana: %d", 
+                             nombre, nivel, vida, puntosMana);
     }
 }
-
-//f
